@@ -46,8 +46,31 @@ and open the template in the editor.
          echo $sum;
        
        
+        echo "<br>";
+         echo "<br>";
+          echo "<br>";
+          
+          $resultsa = mysql_query("SELECT * FROM ausgaben");
+          while($row2 = mysql_fetch_assoc($resultsa)){
+             echo "<table border = '1'>";
+          echo "<tr>";
+          echo "<td>" . $row2['Preis'] . "€,-" . "</td>";
+          echo "<td>" . $row2['Bezeichnung'] . "</td>";
+          echo "</tr>";  
+          echo "</table>";
+          }
+          
+          $sql1 = mysql_query("SELECT SUM(Preis) as total1 from ausgaben");
+          $row3 = mysql_fetch_assoc($sql1);
+          $sum1 = $row3['total1'];
+          echo $sum1;
         
-        
+          
+          $differenz = $sum - $sum1;
+          
+          echo "<br>";
+            echo "<br>";
+            echo "Differenz: " . $differenz;
         ?>
         
     </body>
