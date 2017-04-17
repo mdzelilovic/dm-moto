@@ -44,58 +44,79 @@ and open the template in the editor.
             });
    
             function giveoutput(){
-                
+                var selectvalue = document.getElementById("selectedstuff").value;
                 var a = document.getElementById("resfield").value;
-                if(a !== ""){
+                if(a !== "" && selectvalue !== ""){
                 var b = eval(a);
                 document.getElementById("resfield").value = b;
             
                 var container = document.getElementById("vorschau");
                 var container2 = document.getElementById("vorschau2");
  
-          
+               
+               
                var f = document.querySelector('.active');
                var g = f.value;
                // document.getElementById("vorschau").innerHTML = g;
                 if(g == "Einnahmen"){
-                     var cinput = document.createElement("input");
+                    
+                    var tval = "€" + b + ",- "  + " --------- " + selectvalue;
+                    var gete = document.getElementById("vorschau");
+                    gete.innerHTML += "<input type='text' name = 'vorschauname[]' value = '" + tval + "' style = 'color: green;' size='50'/>";
+                    gete.appendChild(document.createElement("br"));
+                   /*  var cinput = document.createElement("input");
                      
                     cinput.type = "text";
                     cinput.name = "vorschauname[]";
                     cinput.style = "color: green;";
-                    cinput.value = "€" + b + ",-" + g;
+                    cinput.value = "€" + b + ",- " + g + " --------- " + selectvalue;
+                    cinput.size = 40;
+                    
                     
                     container.appendChild(cinput);
                     container.appendChild(document.createElement("br"));
+                    */
                 }
                 else {
-                     var cinput2 = document.createElement("input");
+                    
+                    var tval = "€" + b + ",- "  + " --------- " + selectvalue;
+                    var gete = document.getElementById("vorschau");
+                    gete.innerHTML += "<input type='text' name = 'vorschauname2[]' value = '" + tval + "' style = 'color: red;' size='50'/>";
+                    gete.appendChild(document.createElement("br"));
+                    /* var cinput2 = document.createElement("input");
                      
                     cinput2.type= "text";
                     cinput2.name = "vorschauname2[]";
                     cinput2.style = "color: red;";
-                    cinput2.value = "€" + b + ",-" + g;
+                    cinput2.value = "€" + b + ",-" + g+ " --------- " + selectvalue;
+                    cinput2.size = 40;
                     
                     container2.appendChild(cinput2);
-                    container2.appendChild(document.createElement("br"));
+                    container2.appendChild(document.createElement("br")); */
                 }
                    
                   
      
               
-            }}
+            }
+          
+    }
+   
             </script>
           
     </head>
     <body>
        <div id="header">
         <a href="logout.php">logout</a>
+        <a href="statistic.php">Statistic</a>
         </div>
         <div id="container">
         <div id="calculater">
             
             <button type="button" value="Einnahmen" class="cbutton" id="button1">Einnahmen</button>
             <button type="button" value="Ausgaben" class="cbutton1" id="button2">Ausgaben</button>
+            
+          
             
             <input type="text" name="resultfield" id="resfield" size="34"/>
             <p class="clear"></p>
@@ -121,17 +142,23 @@ and open the template in the editor.
             <button type="button" id="komabutton" class="operatorbutton3" onclick="resfield.value+='.';">,</button>
             <button type="button" id="enterbutton" class="operatorbutton3" onclick="giveoutput();">=</button>
             <p class="clear"></p>
+            <input type="text" name="selectedstuff" id="selectedstuff">Beschreibung 
+            <br>
+             
         </div>
-        <div id="vorschau">
+           
+            <form id="vorschau" action="mytest.php" method="post">
+          
+                <input type="submit" value="submit" id="submitcost">  
             
-            
-            
-            
-        </div>
+        </form>
             
             <div id="vorschau2">
                 
             </div>
+            
+            
+            
         </div>
         <span class="test">
             
